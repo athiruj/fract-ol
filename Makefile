@@ -67,7 +67,7 @@ SRC_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(SRC_DIR_FILES:.c=.o))
 INIT_DIR		=		$(SRC_DIR)initialize/
 INIT_OBJ_DIR	=		$(OBJS_DIR)$(INIT_DIR)
 
-INIT_FILES		=		
+INIT_FILES		=		initialize_fractol.c
 
 INIT_DIR_FILES	=		$(addprefix $(INIT_DIR), $(INIT_FILES))
 INIT_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(INIT_DIR_FILES:.c=.o))
