@@ -6,7 +6,7 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:54:18 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/17 05:13:06 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/02/18 07:13:11 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-
 int	fractol(char **argv)
 {
 	t_fractol	fractol;
 
 	if (initialize_fractol(&fractol, argv))
 		return (1);
+	hooks(&fractol);
+	draw_manual(&fractol.manual, fractol.mlx, fractol.fractal);
+	draw_axis(fractol.mlx, fractol.img, HEIGHT / 2, HEIGHT / 2);
 	mlx_image_to_window(fractol.mlx, fractol.manual, 0, 0);
 	mlx_image_to_window(fractol.mlx, fractol.img, WIDTH - HEIGHT, 0);
 	mlx_loop(fractol.mlx);

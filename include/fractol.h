@@ -6,7 +6,7 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:54:42 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/17 05:11:21 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/02/18 06:43:05 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,17 @@ typedef struct s_complex
  * @param y_offset is offset y position
  * @param zoom
  */
+typedef struct s_cursor
+{
+	double	x_pos;
+	double	y_pos;
+}	t_cursor;
+
+/*
+ * @param x_offset is offset x position
+ * @param y_offset is offset y position
+ * @param zoom
+ */
 typedef struct s_camera
 {
 	double	x_offset;
@@ -64,8 +75,18 @@ typedef struct s_fractol
 	mlx_image_t	*img;
 	mlx_image_t	*manual;
 	t_camera	camera;
+	t_cursor	cursor;
 }	t_fractol;
 
 int	initialize_fractol(t_fractol *fractol, char **argv);
+
+/* hooks */
+void	hooks(t_fractol *fractol);
+void	hook_key(mlx_key_data_t keydata, void *param);
+void	hook_cursor(double xpos, double ypos, void *param);
+
+/* manual display */
+int	draw_manual(mlx_image_t **img, mlx_t *mlx, char *fractal);
+void draw_axis(mlx_t *mlx, mlx_image_t *img, double center_x, double	center_y);
 
 #endif

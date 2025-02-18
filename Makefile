@@ -72,25 +72,39 @@ INIT_FILES		=		initialize_fractol.c
 INIT_DIR_FILES	=		$(addprefix $(INIT_DIR), $(INIT_FILES))
 INIT_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(INIT_DIR_FILES:.c=.o))
 
-# ---- Source Processer -------------------------------------
+# ---- Source hook -------------------------------------
 
-PROC_DIR		=		$(SRC_DIR)process/
-PROC_OBJ_DIR	=		$(OBJS_DIR)$(PROC_DIR)
+HOOK_DIR		=		$(SRC_DIR)hook/
+HOOK_OBJ_DIR	=		$(OBJS_DIR)$(HOOK_DIR)
 
-PROC_FILES		=		
+HOOK_FILES		=		hook.c \
+						hook_key.c \
+						hook_cursor.c
 
-PROC_DIR_FILES	=		$(addprefix $(PROC_DIR), $(PROC_FILES))
-PROC_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(PROC_DIR_FILES:.c=.o))
+HOOK_DIR_FILES	=		$(addprefix $(HOOK_DIR), $(HOOK_FILES))
+HOOK_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(HOOK_DIR_FILES:.c=.o))
+
+# ---- Source manual -------------------------------------
+
+MANU_DIR		=		$(SRC_DIR)manual/
+MANU_OBJ_DIR	=		$(OBJS_DIR)$(MANU_DIR)
+
+MANU_FILES		=		manual.c
+
+MANU_DIR_FILES	=		$(addprefix $(MANU_DIR), $(MANU_FILES))
+MANU_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(MANU_DIR_FILES:.c=.o))
 
 # ==== ALL ===============================================
 
 ALL_OBJ_DIR		=		$(SRC_OBJ_DIR) \
 						$(INIT_OBJ_DIR) \
-						$(PROC_OBJ_DIR)
+						$(HOOK_OBJ_DIR) \
+						$(MANU_OBJ_DIR)
 
 ALL_OBJS		=		$(SRC_OBJ_FILES) \
 						$(INIT_OBJ_FILES) \
-						$(PROC_OBJ_FILES)
+						$(HOOK_OBJ_FILES) \
+						$(MANU_OBJ_FILES)
 
 all: $(NAME)
 

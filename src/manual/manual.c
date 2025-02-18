@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_fractol.c                               :+:      :+:    :+:   */
+/*   manual.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 04:12:52 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/18 05:57:41 by atkaewse         ###   ########.fr       */
+/*   Created: 2025/02/18 01:08:45 by atkaewse          #+#    #+#             */
+/*   Updated: 2025/02/18 05:58:31 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fractol.h"
 
-int	initialize_fractol(t_fractol *fractol, char **argv)
+int	draw_manual(mlx_image_t **img, mlx_t *mlx, char *fractal)
 {
-	fractol->fractal = argv[1];
-	fractol->mlx = mlx_init(WIDTH, HEIGHT, argv[1], false);
-	if (!fractol->mlx)
+	*img = mlx_new_image(mlx, WIDTH - HEIGHT, HEIGHT);
+	if (!*img)
 	{
 		ft_putendl_fd((char *)mlx_strerror(mlx_errno), STDERR_FILENO);
 		return (1);
 	}
-	fractol->img = mlx_new_image(fractol->mlx, WIDTH, HEIGHT);
-	if (!fractol->img)
-	{
-		ft_putendl_fd((char *)mlx_strerror(mlx_errno), STDERR_FILENO);
-		return (1);
-	}
-	
+	mlx_put_string(mlx, fractal, 5, 5);
+
+	// Delete later
+	for	(int y = 0; y < HEIGHT; y++) {
+            mlx_put_pixel(*img, WIDTH - HEIGHT - 1, y, 0xFF0000FF);
+    }
 	return (0);
 }
