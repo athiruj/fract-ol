@@ -41,8 +41,7 @@ int	fract_ol(char **argv)
 	hooks(&fract_ol);
 	// draw_manual(&fract_ol.manual, fract_ol.mlx, fract_ol.fractal);
 	// draw_axis(fract_ol.mlx, fract_ol.img, HEIGHT / 2, HEIGHT / 2);
-	// mlx_image_to_window(fract_ol.mlx, fract_ol.manual, 0, 0);
-	// mlx_image_to_window(fract_ol.mlx, fract_ol.img, MANUAL_WIDTH, 0);
+	mlx_image_to_window(fract_ol.mlx, fract_ol.img, 0, 0);
 	mlx_loop(fract_ol.mlx);
 	mlx_terminate(fract_ol.mlx);
 	return (0);

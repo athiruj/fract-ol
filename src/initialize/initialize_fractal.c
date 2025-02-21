@@ -6,26 +6,30 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 12:40:55 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/21 15:06:16 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/02/22 02:10:35 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fract_ol.h"
 
 int	initialize_fractal(
-	mlx_t	*mlx,
-	mlx_image_t *img,
-	t_fractal *fractal,
-	char *name
-)
+		mlx_t *mlx,
+		mlx_image_t *img,
+		t_fractal **fractal,
+		char *name
+	)
 {
-	img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	if (!img)
+	*fractal = (t_fractal *)malloc(sizeof(t_fractal));
+	if (!*fractal)
 	{
-		ft_putendl_fd((char *)mlx_strerror(mlx_errno), STDERR_FILENO);
+		perror("Fail to allocate fractal");
 		return (1);
 	}
-	// if (ft_strcmp(name, "mandelbrot"))
-		// fractal->fractal = (t_fractal_func)mandelbrot;	
+	(*fractal)->name = name;
+	if (!ft_strcmp(name, "mandelbrot"))
+	{
+		// manual_mandelbrot(mlx, img);
+		(*fractal)->fractal_func = (t_fractal_func)mandelbrot;
+	}
 	return (0);
 }

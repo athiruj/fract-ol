@@ -4,7 +4,7 @@ CCFLAGS			=
 AR				=		ar -rsc
 RM				=		rm -rf
 
-NAME			=		fract_ol
+NAME			=		fractol
 
 # ==== Directories ========================================
 
@@ -68,8 +68,7 @@ INIT_DIR		=		$(SRC_DIR)initialize/
 INIT_OBJ_DIR	=		$(OBJS_DIR)$(INIT_DIR)
 
 INIT_FILES		=		initialize_fract_ol.c \
-						initialize_fractal.c \
-						initialize_manual.c \
+						initialize_fractal.c
 
 INIT_DIR_FILES	=		$(addprefix $(INIT_DIR), $(INIT_FILES))
 INIT_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(INIT_DIR_FILES:.c=.o))
@@ -81,7 +80,8 @@ HOOK_OBJ_DIR	=		$(OBJS_DIR)$(HOOK_DIR)
 
 HOOK_FILES		=		hook.c \
 						hook_key.c \
-						hook_cursor.c
+						hook_cursor.c \
+						hook_resize.c
 
 HOOK_DIR_FILES	=		$(addprefix $(HOOK_DIR), $(HOOK_FILES))
 HOOK_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(HOOK_DIR_FILES:.c=.o))

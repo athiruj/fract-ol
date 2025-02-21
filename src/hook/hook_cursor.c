@@ -6,22 +6,21 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 05:20:11 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/21 15:06:16 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/02/21 23:55:28 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fract_ol.h"
 
-void clear(mlx_t *mlx, mlx_image_t *img)
-{
-	for (int i = 0; i < HEIGHT; i++)
-		for (int j = 0; j < HEIGHT; j++)
-			mlx_put_pixel(img, i, j, 0x00000000);
-}
+// {
+// 	for (int i = 0; i < HEIGHT; i++)
+// 		for (int j = 0; j < HEIGHT; j++)
+// 			mlx_put_pixel(img, i, j, 0x00000000);
+// }
 
 void	draw_axis(mlx_t *mlx, mlx_image_t *img, double center_x, double	center_y)
 {
-	clear(mlx, img);
+	// clear(mlx, img);
 	for	(int n = 0; n < HEIGHT; n++) {
             mlx_put_pixel(img, center_x, n, 0xFFFFFFFF);
             mlx_put_pixel(img, n, center_y, 0xFFFFFFFF);
@@ -45,7 +44,7 @@ void	draw_man(mlx_t *mlx, mlx_image_t *img, double x, double	y)
 	z.y = 0;
 	tmp.x = 0;
 	tmp.y = 0;
-	clear(mlx, img);
+	// clear(mlx, img);
 	draw_axis(mlx, img, HEIGHT / 2, HEIGHT / 2);
 	for (int i = 0; i < 1000; i++)
 	{

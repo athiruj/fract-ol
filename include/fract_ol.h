@@ -30,15 +30,7 @@
 # endif
 
 # ifndef WIDTH
-#  define WIDTH 720
-# endif
-
-# ifndef MANUAL_HEIGHT
-#  define MANUAL_HEIGHT 720
-# endif
-
-# ifndef MANUAL_WIDTH
-#  define MANUAL_WIDTH 240
+#  define WIDTH 960
 # endif
 
 # define ITERATION 42
@@ -78,14 +70,13 @@ typedef struct s_camera
 
 typedef void	(*t_fractal_func)(mlx_t *mlx, mlx_image_t *img);
 
-typedef void	(*t_manual_func)(mlx_t *mlx, mlx_image_t *img);
+typedef void	(*t_manual)(mlx_t *mlx);
 
-typedef struct t_fractal
+typedef struct s_fractal
 {
 	char			*name;
-	t_fractal_func	fractal;
-	t_manual_func	manual;
-
+	t_manual		manual;
+	t_fractal_func	fractal_func;
 }	t_fractal;
 
 typedef struct s_fract_ol
@@ -93,35 +84,28 @@ typedef struct s_fract_ol
 	t_fractal	*fractal;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-	mlx_image_t	*manual;
 	t_camera	camera;
 	t_cursor	cursor;
 }	t_fract_ol;
 
 int		initialize_fract_ol(t_fract_ol *fract_ol, char **argv);
 int		initialize_fractal(
-			mlx_t	*mlx,
+			mlx_t *mlx,
 			mlx_image_t *img,
-			t_fractal *fractal,
-			char *name
-			);
-int		initialize_manual(
-			mlx_t	*mlx,
-			mlx_image_t **img,
 			t_fractal **fractal,
 			char *name
 			);
 
-void	mandelbrot(mlx_t *mlx, mlx_image_t *img);
+void	mandelbrot(mlx_t *mlx, mlx_image_t *img, t_fract_ol *fract_ol);
 
 /* hooks */
 void	hooks(t_fract_ol *fract_ol);
 void	hook_key(mlx_key_data_t keydata, void *param);
 void	hook_cursor(double xpos, double ypos, void *param);
+void	hook_resize(int32_t width, int32_t height, void *param);
 
 /* manual display */
 void	manual_mandelbrot(mlx_t *mlx, mlx_image_t *img);
-// int		draw_manual(mlx_image_t **img, mlx_t *mlx, char *fractal);
 // void 	draw_axis(mlx_t *mlx, mlx_image_t *img, double center_x, double center_y);
-
+void	paint(mlx_t *mlx, mlx_image_t *img, int width, int height,unsigned int color);
 #endif
