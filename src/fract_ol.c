@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   fract_ol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:54:18 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/18 07:13:11 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:02:19 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include "../include/fract_ol.h"
 
-int	fractol(char **argv);
+int	fract_ol(char **argv);
 
 int	main(int argc, char **argv)
 {
@@ -21,29 +21,29 @@ int	main(int argc, char **argv)
 			&& ft_strncmp(argv[1], "julia", 5)
 		))
 	{
-		ft_putstr_fd("Usage: ./fractol <fractal>\n", STDERR_FILENO);
+		ft_putstr_fd("Usage: ./fract_ol <fractal>\n", STDERR_FILENO);
 		ft_putstr_fd("Available: fractal\n", STDERR_FILENO);
 		ft_putstr_fd("           - mandelbrot\n", STDERR_FILENO);
 		ft_putstr_fd("           - julia\n", STDERR_FILENO);
 		return (1);
 	}
-	if (fractol(argv))
+	if (fract_ol(argv))
 		return (1);
 	return (0);
 }
 
-int	fractol(char **argv)
+int	fract_ol(char **argv)
 {
-	t_fractol	fractol;
+	t_fract_ol	fract_ol;
 
-	if (initialize_fractol(&fractol, argv))
+	if (initialize_fract_ol(&fract_ol, argv))
 		return (1);
-	hooks(&fractol);
-	draw_manual(&fractol.manual, fractol.mlx, fractol.fractal);
-	draw_axis(fractol.mlx, fractol.img, HEIGHT / 2, HEIGHT / 2);
-	mlx_image_to_window(fractol.mlx, fractol.manual, 0, 0);
-	mlx_image_to_window(fractol.mlx, fractol.img, WIDTH - HEIGHT, 0);
-	mlx_loop(fractol.mlx);
-	mlx_terminate(fractol.mlx);
+	hooks(&fract_ol);
+	// draw_manual(&fract_ol.manual, fract_ol.mlx, fract_ol.fractal);
+	// draw_axis(fract_ol.mlx, fract_ol.img, HEIGHT / 2, HEIGHT / 2);
+	// mlx_image_to_window(fract_ol.mlx, fract_ol.manual, 0, 0);
+	// mlx_image_to_window(fract_ol.mlx, fract_ol.img, MANUAL_WIDTH, 0);
+	mlx_loop(fract_ol.mlx);
+	mlx_terminate(fract_ol.mlx);
 	return (0);
 }

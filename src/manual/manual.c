@@ -6,11 +6,11 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 01:08:45 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/18 05:58:31 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/02/21 12:01:10 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fractol.h"
+#include "../../include/fract_ol.h"
 
 int	draw_manual(mlx_image_t **img, mlx_t *mlx, char *fractal)
 {

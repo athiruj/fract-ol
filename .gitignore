@@ -1,3 +1,7 @@
 submodule/MLX42/*
 
+*.o
+*/*.o
+*/*/*.o
+
 fractol

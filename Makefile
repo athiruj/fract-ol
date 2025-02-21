@@ -4,7 +4,7 @@ CCFLAGS			=
 AR				=		ar -rsc
 RM				=		rm -rf
 
-NAME			=		fractol
+NAME			=		fract_ol
 
 # ==== Directories ========================================
 
@@ -57,7 +57,7 @@ HEADER_DIR		=	 	include/
 SRC_DIR			=		src/
 SRC_OBJ_DIR		=		$(OBJS_DIR)$(SRC_DIR)
 
-SRC_FILE		=		fractol.c
+SRC_FILE		=		fract_ol.c
 
 SRC_DIR_FILES	=		$(addprefix $(SRC_DIR), $(SRC_FILE))
 SRC_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(SRC_DIR_FILES:.c=.o))
@@ -67,7 +67,9 @@ SRC_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(SRC_DIR_FILES:.c=.o))
 INIT_DIR		=		$(SRC_DIR)initialize/
 INIT_OBJ_DIR	=		$(OBJS_DIR)$(INIT_DIR)
 
-INIT_FILES		=		initialize_fractol.c
+INIT_FILES		=		initialize_fract_ol.c \
+						initialize_fractal.c \
+						initialize_manual.c \
 
 INIT_DIR_FILES	=		$(addprefix $(INIT_DIR), $(INIT_FILES))
 INIT_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(INIT_DIR_FILES:.c=.o))
@@ -84,12 +86,22 @@ HOOK_FILES		=		hook.c \
 HOOK_DIR_FILES	=		$(addprefix $(HOOK_DIR), $(HOOK_FILES))
 HOOK_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(HOOK_DIR_FILES:.c=.o))
 
+# ---- Source fractal ------------------------------------
+
+FRAC_DIR		=		$(SRC_DIR)fractal/
+FRAC_OBJ_DIR	=		$(OBJS_DIR)$(FRAC_DIR)
+
+FRAC_FILES		=		mandelbrot.c
+
+FRAC_DIR_FILES	=		$(addprefix $(FRAC_DIR), $(FRAC_FILES))
+FRAC_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(FRAC_DIR_FILES:.c=.o))
+
 # ---- Source manual -------------------------------------
 
 MANU_DIR		=		$(SRC_DIR)manual/
 MANU_OBJ_DIR	=		$(OBJS_DIR)$(MANU_DIR)
 
-MANU_FILES		=		manual.c
+MANU_FILES		=		manual_mandelbort.c
 
 MANU_DIR_FILES	=		$(addprefix $(MANU_DIR), $(MANU_FILES))
 MANU_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(MANU_DIR_FILES:.c=.o))
@@ -99,11 +111,13 @@ MANU_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(MANU_DIR_FILES:.c=.o))
 ALL_OBJ_DIR		=		$(SRC_OBJ_DIR) \
 						$(INIT_OBJ_DIR) \
 						$(HOOK_OBJ_DIR) \
+						$(FRAC_OBJ_DIR) \
 						$(MANU_OBJ_DIR)
 
 ALL_OBJS		=		$(SRC_OBJ_FILES) \
 						$(INIT_OBJ_FILES) \
 						$(HOOK_OBJ_FILES) \
+						$(FRAC_OBJ_FILES) \
 						$(MANU_OBJ_FILES)
 
 all: $(NAME)

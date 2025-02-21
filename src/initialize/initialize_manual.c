@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   initialize_manual.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 02:26:51 by atkaewse          #+#    #+#             */
+/*   Created: 2025/02/21 12:25:45 by atkaewse          #+#    #+#             */
 /*   Updated: 2025/02/21 15:06:16 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fract_ol.h"
 
-void	hooks(t_fract_ol *fract_ol)
+int	initialize_manual(
+	mlx_t	*mlx,
+	mlx_image_t **img,
+	t_fractal **fractal,
+	char *name
+	)
 {
-	mlx_key_hook(fract_ol->mlx, hook_key, fract_ol);
-	// mlx_cursor_hook(fract_ol->mlx, hook_cursor, fract_ol);
+	*img = mlx_new_image(mlx, MANUAL_WIDTH, MANUAL_HEIGHT);
+	if (!*img)
+	{
+		ft_putendl_fd((char *)mlx_strerror(mlx_errno), STDERR_FILENO);
+		return (1);
+	}
+	if (ft_strcmp(name, "mandelbrot"))
+	{
+		// (*fractal)->manual = (t_manual_func)manual_mandelbrot;
+		printf("in %p\n", (*fractal)->manual);
+	}
+	return (0);
 }

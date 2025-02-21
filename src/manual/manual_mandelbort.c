@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   manual_mandelbort.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 02:26:51 by atkaewse          #+#    #+#             */
+/*   Created: 2025/02/21 12:20:40 by atkaewse          #+#    #+#             */
 /*   Updated: 2025/02/21 15:06:16 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fract_ol.h"
 
-void	hooks(t_fract_ol *fract_ol)
+void	manual_mandelbrot(mlx_t *mlx, mlx_image_t *img)
 {
-	mlx_key_hook(fract_ol->mlx, hook_key, fract_ol);
-	// mlx_cursor_hook(fract_ol->mlx, hook_cursor, fract_ol);
+	mlx_put_string(mlx, "=== Mandelbrot set ===", 5, 5);
 }

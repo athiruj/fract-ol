@@ -6,11 +6,11 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 05:20:11 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/18 07:16:28 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:06:16 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fractol.h"
+#include "../../include/fract_ol.h"
 
 void clear(mlx_t *mlx, mlx_image_t *img)
 {
@@ -63,18 +63,45 @@ void	draw_man(mlx_t *mlx, mlx_image_t *img, double x, double	y)
 	}
 }
 
+// void	calculate_mandelbrot(t_fractal *fractal)
+// {
+// 	int		i;
+// 	double	x_temp;
+
+// 	fractal->name = "mandel";
+// 	i = 0;
+// 	fractal->zx = 0.0;
+// 	fractal->zy = 0.0;
+// 	fractal->cx = (fractal->x / fractal->zoom) + fractal->offset_x;
+// 	fractal->cy = (fractal->y / fractal->zoom) + fractal->offset_y;
+// 	while (++i < fractal->max_iterations)
+// 	{
+// 		x_temp = fractal->zx * fractal->zx - fractal->zy * fractal->zy
+// 			+ fractal->cx;
+// 		fractal->zy = 2. * fractal->zx * fractal->zy + fractal->cy;
+// 		fractal->zx = x_temp;
+// 		if (fractal->zx * fractal->zx + fractal->zy
+// 			* fractal->zy >= __DBL_MAX__)
+// 			break ;
+// 	}
+// 	if (i == fractal->max_iterations)
+// 		put_color_to_pixel(fractal, fractal->x, fractal->y, 0x000000);
+// 	else
+// 		put_color_to_pixel(fractal, fractal->x, fractal->y, (fractal->color
+// 				* i));
+// }
 
 void hook_cursor(double xpos, double ypos, void *param)
 {
-	t_fractol	*fractol;
+	t_fract_ol	*fract_ol;
 
-	fractol = param;
-	fractol->cursor.x_pos = xpos;
-	fractol->cursor.y_pos = ypos;
+	fract_ol = param;
+	fract_ol->cursor.x_pos = xpos;
+	fract_ol->cursor.y_pos = ypos;
 	if (xpos >= (WIDTH - HEIGHT) && xpos < WIDTH && ypos >= 0 && ypos < HEIGHT)
 	{
-		// draw_axis(fractol->mlx, fractol->img, fractol->cursor.x_pos - (WIDTH - HEIGHT), fractol->cursor.y_pos);
-		draw_man(fractol->mlx, fractol->img, (fractol->cursor.x_pos - (WIDTH - HEIGHT) - 360) * 4 / HEIGHT, (-fractol->cursor.y_pos + 360) * 4 / HEIGHT);
+		// draw_axis(fract_ol->mlx, fract_ol->img, fract_ol->cursor.x_pos - (WIDTH - HEIGHT), fract_ol->cursor.y_pos);
+		// draw_man(fract_ol->mlx, fract_ol->img, (fract_ol->cursor.x_pos - (WIDTH - HEIGHT) - 360) * 4 / HEIGHT, (-fract_ol->cursor.y_pos + 360) * 4 / HEIGHT);
 		// HEIGHT
 	}
 }
