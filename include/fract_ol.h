@@ -6,7 +6,7 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 21:54:42 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/03/01 04:57:19 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/03/01 05:05:15 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # endif
 
 # define ITERATION 42
+# define MAX_ITERATION 200
+# define MIN_ITERATION 20
 # define STEP 42
 # define ZOOM 1.2
 /*
