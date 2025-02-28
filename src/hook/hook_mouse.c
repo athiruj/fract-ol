@@ -6,7 +6,7 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 14:19:09 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/03/01 00:54:30 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/03/01 01:49:02 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	hook_mouse(
 		fract_ol->fractal.fractal_func(
 			fract_ol->mlx,
 			fract_ol->img,
-			fract_ol->camera,
-			fract_ol->cursor
+			&fract_ol->move,
+			&fract_ol->complex
 		);
 }

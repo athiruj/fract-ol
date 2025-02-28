@@ -6,7 +6,7 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 12:40:55 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/03/01 01:01:06 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/03/01 04:27:33 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,12 @@
 
 int	initialize_fractal(t_fractal *fractal, char *name)
 {
-	if (!fractal)
-	{
-		perror("Fail to allocate fractal");
-		return (1);
-	}
 	if (is_fractal(name) == 1)
 		*fractal = (t_fractal){.name = name,
-			.manual = (t_manual)manual,
-			.fractal_func = (t_fractal_func)mandelbrot
-		};
+			.fractal_func = (t_fractal_func)mandelbrot};
 	else if (is_fractal(name) == 2)
-	{
-		fractal->fractal_func = (t_fractal_func)mandelbrot;
-		fractal->manual = (t_manual)manual;
-	}
+		*fractal = (t_fractal){.name = name,
+			.fractal_func = (t_fractal_func)julia};
 	else
 		return (1);
 	return (0);
