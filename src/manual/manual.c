@@ -5,26 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 01:08:45 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/21 12:01:10 by atkaewse         ###   ########.fr       */
+/*   Created: 2025/02/21 12:20:40 by atkaewse          #+#    #+#             */
+/*   Updated: 2025/02/28 10:22:29 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fract_ol.h"
 
-int	draw_manual(mlx_image_t **img, mlx_t *mlx, char *fractal)
+void	manual(mlx_t *mlx, t_fractal *fractal)
 {
-	*img = mlx_new_image(mlx, WIDTH - HEIGHT, HEIGHT);
-	if (!*img)
-	{
-		ft_putendl_fd((char *)mlx_strerror(mlx_errno), STDERR_FILENO);
-		return (1);
-	}
-	mlx_put_string(mlx, fractal, 5, 5);
-
-	// Delete later
-	for	(int y = 0; y < HEIGHT; y++) {
-            mlx_put_pixel(*img, WIDTH - HEIGHT - 1, y, 0xFF0000FF);
-    }
-	return (0);
+	mlx_put_string(mlx, fractal->name, 5, 5);
 }

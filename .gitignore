@@ -1,3 +1,5 @@
+.vscode
+
 submodule/MLX42/*
 
 *.o

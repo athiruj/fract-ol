@@ -80,8 +80,10 @@ HOOK_OBJ_DIR	=		$(OBJS_DIR)$(HOOK_DIR)
 
 HOOK_FILES		=		hook.c \
 						hook_key.c \
+						hook_mouse.c \
 						hook_cursor.c \
-						hook_resize.c
+						hook_resize.c \
+						hook_scroll.c \
 
 HOOK_DIR_FILES	=		$(addprefix $(HOOK_DIR), $(HOOK_FILES))
 HOOK_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(HOOK_DIR_FILES:.c=.o))
@@ -101,7 +103,7 @@ FRAC_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(FRAC_DIR_FILES:.c=.o))
 MANU_DIR		=		$(SRC_DIR)manual/
 MANU_OBJ_DIR	=		$(OBJS_DIR)$(MANU_DIR)
 
-MANU_FILES		=		manual_mandelbort.c
+MANU_FILES		=		manual.c
 
 MANU_DIR_FILES	=		$(addprefix $(MANU_DIR), $(MANU_FILES))
 MANU_OBJ_FILES	=		$(addprefix $(OBJS_DIR), $(MANU_DIR_FILES:.c=.o))

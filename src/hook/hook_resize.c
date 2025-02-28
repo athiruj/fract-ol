@@ -6,7 +6,7 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 01:00:46 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/22 02:01:24 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/03/01 00:58:43 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	hook_resize(int32_t width, int32_t height, void *param)
 	{
 		fract_ol->mlx->width = width;
 		fract_ol->mlx->height = height;
-		fract_ol->fractal->fractal_func(fract_ol->mlx, fract_ol->img);
+		fract_ol->fractal.fractal_func(
+			fract_ol->mlx,
+			fract_ol->img,
+			fract_ol->camera,
+			fract_ol->cursor
+		);
 	}
 }

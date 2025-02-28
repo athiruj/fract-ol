@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manual_mandelbort.c                                :+:      :+:    :+:   */
+/*   hook_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 12:20:40 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/02/22 02:02:29 by atkaewse         ###   ########.fr       */
+/*   Created: 2025/02/28 14:19:09 by atkaewse          #+#    #+#             */
+/*   Updated: 2025/03/01 00:54:30 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fract_ol.h"
 
-void	manual_mandelbrot(mlx_t *mlx, mlx_image_t *img)
+void	hook_mouse(
+		mouse_key_t button,
+		action_t action,
+		modifier_key_t mods,
+		void *param
+	)
 {
-	// paint(mlx, img, MANUAL_WIDTH, MANUAL_HEIGHT, 0x1E1E1EFF);
-	mlx_put_string(mlx, "Mandelbrot set", 5, 5);
+	t_fract_ol	*fract_ol;
+
+	fract_ol = param;
+	if (button == MLX_MOUSE_BUTTON_LEFT)
+		fract_ol->fractal.fractal_func(
+			fract_ol->mlx,
+			fract_ol->img,
+			fract_ol->camera,
+			fract_ol->cursor
+		);
 }
