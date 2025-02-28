@@ -6,7 +6,7 @@
 /*   By: atkaewse <atkaewse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 01:38:25 by atkaewse          #+#    #+#             */
-/*   Updated: 2025/03/01 04:50:29 by atkaewse         ###   ########.fr       */
+/*   Updated: 2025/03/01 05:03:31 by atkaewse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ void	hook_key(mlx_key_data_t keydata, void *param)
 		initialize_move(fract_ol);
 	else if (keydata.key == MLX_KEY_C)
 		fract_ol->move.color += 165813;
-	else if (keydata.key == MLX_KEY_Z)
+	else if (keydata.key == MLX_KEY_Z
+		&& fract_ol->move.iteration < MAX_ITERATION)
 		fract_ol->move.iteration += 10;
-	else if (keydata.key == MLX_KEY_X)
+	else if (keydata.key == MLX_KEY_X
+		&& fract_ol->move.iteration > MIN_ITERATION)
 		fract_ol->move.iteration -= 10;
 	fract_ol->fractal.fractal_func(fract_ol->mlx, fract_ol->img,
 		&fract_ol->move, &fract_ol->complex);
